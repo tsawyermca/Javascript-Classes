@@ -314,3 +314,132 @@ function playSlotMachine() {
 }
 
 // playSlotMachine();
+
+//Z4 P1
+//Function that is a Payroll Program. It prompts the user to enter an employees hourly rate and the number of hours they worked
+//hourly rate can only be between 7.50 and 18.25, while hours worked can only be between 0 and 40 hours.
+
+function payCalc(){
+    let hourlyPay = parseFloat(prompt("Enter Your Hourly Rate"))
+    while(isNaN(hourlyPay) || hourlyPay < 7.5 || hourlyPay > 18.25){
+        alert("This is an invalid amount. Hourly pay can only be between $7.50 and $18.25");
+        return;
+    }
+
+    let hoursWorked = parseFloat(prompt("Enter Your Hours Worked"))
+    while(isNaN(hoursWorked) || hoursWorked < 0 || hoursWorked > 40){
+        alert("This is an invalid amount. Hours worked can only be between 0 and 40");
+        return;
+    }
+
+    let grossPay = hourlyPay * hoursWorked;
+    console.log(`Hourly Pay Rate: $${hourlyPay}`);
+    console.log(`Hours Worked: ${hoursWorked}`);
+    console.log(`Gross Pay: $${grossPay.toFixed(2)}`);
+}
+
+// payCalc();
+
+
+//Z4 P2
+//Function that does seating in a theater and charges different amounts based on which section
+
+function theaterSeats(){
+    let ticketA = 20;
+    let ticketB = 15;
+    let ticketC = 10;
+
+    let salesA = parseFloat(prompt("How many tickets for Section A were sold?"));
+    while(isNaN(salesA) || salesA < 0 || salesA > 300){
+        alert("This is an invalid amount");
+        return;
+    }
+    let salesB = parseFloat(prompt("How many tickets for Section B were sold?"));
+    while(isNaN(salesB) || salesB < 0 || salesB > 500){
+        alert("This is an invalid amount");
+        return;
+    }
+    let salesC = parseFloat(prompt("How many tickets for Section C were sold?"));
+    while(isNaN(salesC) || salesC < 0 || salesC > 200){
+        alert("This is an invalid amount");
+        return;
+    }
+
+    let revenueA = salesA * ticketA;
+    let revenueB = salesB * ticketB;
+    let revenueC = salesC * ticketC;
+    let revenueTotal = revenueA + revenueB + revenueC;
+    
+    if(salesA === 300 && salesB === 500 && salesC === 200){
+        console.log(`Full House! We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA === 300 && salesB === 500 && salesC < 200){
+        console.log(`Sections A and B sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA === 300 && salesB < 500 && salesC === 200){
+        console.log(`Sections A and C sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA < 300 && salesB === 500 && salesC === 200){
+        console.log(`Sections B and C sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA === 300 && salesB < 500 && salesC < 200){
+        console.log(`Section A sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA < 300 && salesB === 500 && salesC < 200){
+        console.log(`Section B sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else if(salesA < 300 && salesB < 500 && salesC === 200){
+        console.log(`Section C sold out. We made $${revenueTotal.toFixed(2)} in sales`);
+    } else {
+        console.log(`We made $${revenueTotal.toFixed(2)} in sales`);
+    }
+}
+
+// theaterSeats();
+
+
+//Z4 P3
+//Function that serves as a fat gram calculator. Asks user for number of fat grams and calories within a particular food
+
+function fatCalc(){
+    let fat = parseInt(prompt("How many grams of Fat are in your food?"));
+    while(isNaN(fat)){
+        alert("This is an invalid input");
+        return;
+    }
+    let cal = parseInt(prompt("How many calories are in your food?"));
+    while(isNaN(cal) || cal > (fat * 9)){
+        alert("This is an invalid input");
+        return;
+    }
+
+    let fatPercent = (fat * 9) / cal;
+
+    if(fatPercent < 0.3){
+        console.log(`Your food is ${fatPercent}% fat. This is a low-fat food`)
+    } else {
+        console.log(`Your food is ${fatPercent}% fat`)
+    }
+}
+
+// fatCalc();
+
+
+//Z4 P4
+//Function that serves as a speeding violation calculator. It calculates and displays the number of miles over a speed limit that a speeding driver was going. It asks for speed limit and drivers speed
+
+function speedCalc(){
+    let speedLimit = parseInt(prompt("What is the speed limit"));
+    while(isNaN(speedLimit) || speedLimit < 20 || speedLimit > 70){
+        alert("This is an invalid input. The Speed Limit should be between 20 and 70");
+        return;
+    }
+
+    let driverSpeed = parseInt(prompt("How fast was the driver going"));
+    while(isNaN(driverSpeed) || speedLimit > driverSpeed){
+        alert("This is an invalid input.")
+        return;
+    }
+
+    let overLimit = driverSpeed - speedLimit;
+    console.log(`The driver was going ${driverSpeed}, that is ${overLimit} over the Speed Limit of ${speedLimit}`);
+}
+
+// speedCalc();
+
+//Z4 P5
+//Updated Rock Paper Scissors, See above at Z3 P3 as the modifications was already made
